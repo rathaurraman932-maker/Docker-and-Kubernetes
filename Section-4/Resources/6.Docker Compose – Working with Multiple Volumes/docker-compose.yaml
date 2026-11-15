@@ -1,0 +1,42 @@
+services:
+  webapp:
+    image: dotnetapp:v3
+    container_name: dotnet-container
+    depends_on:
+      - db
+    networks:
+      - app-network
+    ports:
+      - "8080:80"
+    volumes:
+      - type: volume
+        source: dotnet-data
+        target: /app/wwwroot/images
+
+  db:
+    image: mysql:8.0
+    container_name: mysql-instance
+    networks:
+      - app-network
+    volumes:
+      - type: volume
+        source: mysql-data
+        target: /var/lib/mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=appusr@1090
+
+networks:
+  app-network:
+    name: app-network
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.0.0.0/16
+
+volumes:
+  mysql-data:
+    name: mysql-data
+  dotnet-data:
+    name: dotnet-data
