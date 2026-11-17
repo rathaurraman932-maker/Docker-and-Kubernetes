@@ -1,0 +1,8 @@
+version: "3.8"
+
+services:
+  app:
+    image: php-app:${app}
+    container_name: phpapp-instance    
+    ports:
+      - "8080:80"

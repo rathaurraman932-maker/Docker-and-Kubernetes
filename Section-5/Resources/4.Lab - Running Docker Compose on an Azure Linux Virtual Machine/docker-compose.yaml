@@ -1,0 +1,35 @@
+services:
+  webapp:
+    image: rrath753/php-app:v2
+    container_name: phpapp-instance
+    networks:
+      - app-network
+    ports:
+      - "8080:80"
+
+  db:
+    image: rrath753/mysql-image:latest
+    container_name: mysql-instance
+    networks:
+      - app-network
+    volumes:
+      - type: volume
+        source: mysql-data
+        target: /var/lib/mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=sqlset1010
+
+networks:
+  app-network:
+    name: app-network
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.20.0.0/16
+
+volumes:
+  mysql-data:
+    name: mysql-data

@@ -1,0 +1,6 @@
+services:
+  phpapp:
+    image: php-app:${APP}
+    container_name: phpapp-instance
+    ports:
+      - "8080:80"
