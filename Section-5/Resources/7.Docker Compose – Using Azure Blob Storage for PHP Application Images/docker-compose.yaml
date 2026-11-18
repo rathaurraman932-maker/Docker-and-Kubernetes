@@ -1,0 +1,31 @@
+services:
+  webapp:
+    image: phpapp:v3
+    build: .
+    container_name: phpapp-instance
+    networks:
+      - app-network
+    ports:
+      - "8080:80"
+
+  db:
+    image: mysql:8.0.46
+    container_name: mysql-instance
+    networks:
+      - app-network
+    volumes:
+      - mysql-data:/var/lib/mysql
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: appusr@1090
+
+networks:
+  app-network:
+    name: app-network
+    driver: bridge
+
+volumes:
+  mysql-data:
+    external: true
+    name: mysql-data
