@@ -1,5 +1,5 @@
-FROM php:8.2-apache
-
-COPY . /var/www/html
-
-RUN docker-php-ext-install mysqli
+FROM php:8.2-apache 
+RUN docker-php-ext-install mysqli 
+COPY . /var/www/html 
+EXPOSE 80 
+CMD ["apache2-foreground"]

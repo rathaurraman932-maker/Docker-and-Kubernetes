@@ -1,12 +1,12 @@
-CREATE DATABASE IF NOT EXISTS appdb;
+CREATE DATABASE IF NOT EXISTS empdb;
 
 CREATE USER IF NOT EXISTS 'appusr'@'%'
 IDENTIFIED BY 'appusr@1090';
 
 GRANT SELECT, INSERT, UPDATE, DELETE
-ON appdb.* TO 'appusr'@'%';
+ON empdb.* TO 'appusr'@'%';
 
-USE appdb;
+USE empdb;
 
 DROP TABLE IF EXISTS Employee_Information;
 

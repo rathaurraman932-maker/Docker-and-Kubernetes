@@ -1,12 +1,12 @@
-CREATE DATABASE IF NOT EXISTS appdb;
+CREATE DATABASE IF NOT EXISTS empdb;
 
 CREATE USER IF NOT EXISTS 'appusr'@'%'
 IDENTIFIED BY 'appusr@1090';
 
 GRANT SELECT, INSERT, UPDATE, DELETE
-ON appdb.* TO 'appusr'@'%';
+ON empdb.* TO 'appusr'@'%';
 
-USE appdb;
+USE empdb;
 
 DROP TABLE IF EXISTS Employee_Information;
 
@@ -21,9 +21,9 @@ CREATE TABLE Employee_Information
 INSERT INTO Employee_Information
 (Employee_ID, Employee_Name, Employee_Image, Phone)
 VALUES
-(1, 'Rahul', '', '565466'),
-(2, 'Amit', '', '9565455'),
-(3, 'Priya', '', '565468');
+(1, 'Rahul', 'images/rahul.jpg', '565466'),
+(2, 'Amit', 'images/amit.jpg', '9565455'),
+(3, 'Priya', 'images/priya.jpg', '565468');
 
 SELECT * FROM Employee_Information;
 

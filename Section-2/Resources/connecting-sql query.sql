@@ -1,8 +1,8 @@
 -- Create database
-CREATE DATABASE IF NOT EXISTS appdb;
+CREATE DATABASE IF NOT EXISTS empdb;
 
 -- Select database
-USE appdb;
+USE empdb;
 
 -- Delete old table
 DROP TABLE IF EXISTS Employee_Information;
