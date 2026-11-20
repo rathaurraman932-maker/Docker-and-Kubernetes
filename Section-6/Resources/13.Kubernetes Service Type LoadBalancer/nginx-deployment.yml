@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+# The metadata helps to give additional information for the object we are creating
+# We can give any name to our deployment
+metadata: 
+  name: nginx-deployment
+# The specification is based on the DeploymentSpec. And this specifies what should be the desired state of the deplyment  
+spec:
+  replicas: 1 # This specifies the number of Pods to run
+  selector: # The selector defines which Pods are managed by the deployment.
+  # Remember that this deployment will now be controlled by the Deployment controller.
+  # Hence Kubernetes will now ensure that Pod defintions with matching labels are managed.
+    matchLabels:
+      app: nginx-instance
+  template: # This is used to define the pods that need to be deployed
+  # This is based on the PodTemplateSpec
+    metadata: # Here we are now adding information about the Pod that needs to be deployed
+      labels:
+        app: nginx-instance
+    spec: # Here we are now adding the specification for the Pod
+    # We don't mention the kind here , because the template is based on the Pod template
+      containers:
+      - name: nginx-instance
+        image: nginx
+        ports:
+        - containerPort: 8080

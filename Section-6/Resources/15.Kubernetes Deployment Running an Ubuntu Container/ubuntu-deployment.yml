@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: ubuntu-deployment
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: ubuntu-instance
+
+  template:
+    metadata:
+      labels:
+        app: ubuntu-instance
+
+    spec:
+      containers:
+      - name: ubuntu-container
+        image: ubuntu
+        command: ["sleep", "3600"]
