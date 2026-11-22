@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: php-app-deployment
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: php-app
+
+  template:
+    metadata:
+      labels:
+        app: php-app
+
+    spec:
+      containers:
+        - name: php-app-container
+          image: rrath753/php-app:v3
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
